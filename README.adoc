@@ -8,7 +8,7 @@ v0.1, September 19, 2020
 image::https://www.repostatus.org/badges/latest/wip.svg[]
 
 Use this document as a set of recommendations to build strong, predictable, easy to use REST APIs.
-In general, REST is not only about API but about constraints for flexible and scalable applications (please, https://en.wikipedia.org/wiki/Representational_state_transfer[read Wikipedia] for more information).
+In general, REST is not only about API but about constraints for flexible and scalable applications (please, https://en.wikipedia.org/wiki/Representational_state_transfer[read Wikipedia^] for more information).
 This document is mostly about **Uniform interface constraint**.
 
 TIP: If you can remember only one thing: _DO API DESIGN UNIFORMLY EVERYWHERE_.
