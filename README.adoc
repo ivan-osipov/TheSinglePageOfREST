@@ -1,0 +1,108 @@
+= The Single Page Of REST
+Ivan Osipov <contact@i-osipov.ru>
+v0.1, September 19, 2020
+
+:sectlinks:
+:sectnumlevels: 1
+
+image::https://www.repostatus.org/badges/latest/wip.svg[]
+
+Use this document as a set of recommendations to build strong, predictable, easy to use REST APIs.
+In general, REST is not only about API but about constraints for flexible and scalable applications (please, https://en.wikipedia.org/wiki/Representational_state_transfer[read Wikipedia] for more information).
+This document is mostly about **Uniform interface constraint**.
+
+TIP: If you can remember only one thing: _DO API DESIGN UNIFORMLY EVERYWHERE_.
+
+All recommendations follow the format:
+
+== <number>. Name of a recommendation
+
+=== Explanation
+
+Detailed explanation of the recommendation
+
+=== Alternatives (if applicable)
+
+Only relevant alternatives
+
+=== Reason
+
+Why the recommendation is better than alternatives
+
+:sectnums:
+
+== Specify minimal Agreement for your clients
+
+=== Explanation
+
+Provide short agreement for your clients at least.
+Specify how you are going to update API, what is its maximal transition period to migrate from a version N to version N+1 and similar generic information about the API.
+
+=== Reason
+
+If you are going to add fields to content of your API without version upgrade specify that in the agreement.
+Your clients must know that they should not create their custom fields in DTO (Data Transfer Objects) on their side because of the contract.
+
+If you have 1 year migration period from verison N to version N+1 specify that.
+If you have marker metadata about API deprecation (for example, deprecation warning header) specify that.
+
+== JSON-first API
+
+=== Explanation
+
+If a client doesn't provide Accept header specifying expected data format then return JSON
+
+=== Reason
+
+Nowadays, JSON is a default format to transfer data.
+It is simple, pretty concise, readable both by machines and humans.
+
+== Use predictable and extendable base url
+
+=== Explanation
+
+* Use `rest.your-backend-domain.com` for external clients
+* Use `your-frontend-domain.com/rest` for frontends
+
+=== Alternatives
+
+- `api.your-backend-domain.com`
+- `your-backend-domain.com`
+
+=== Reason
+
+Use `rest` not `api` and not `zero` prefix because of extendability.
+In one year you can provide extra GraphQL API for effective and flexible data fetching or any other API over http.
+Two base urls `api.yourdbackendomain.com` and `graphql.yourdbackendomain.com` will look not obvious.
+
+== Mandatory versioning
+
+== Nouns-first design
+
+== Design Predictable API
+
+== Provide extendable response
+
+== Sensible HTTP verbs
+
+== Provide partial response
+
+== Show deprecation warnings
+
+== Allow pagination
+
+== Format errors
+
+== Avoid composite id, no deep embedding
+
+== Use HTTP content negotiation
+
+== Use standard HTTP cache
+
+== Case of fields should depend on most of your clients
+
+== Design Batch Requests
+
+== Provide useful flags if a client can need it
+
+== Provide time only in UTC+0
