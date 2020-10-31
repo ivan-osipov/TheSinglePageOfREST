@@ -1,6 +1,6 @@
 = The Single Page Of REST
 Ivan Osipov <contact@i-osipov.ru>
-v0.1, September 19, 2020
+v0.2, September 19, 2020
 
 :sectlinks:
 :sectnumlevels: 1
@@ -46,11 +46,11 @@ Your clients must know that they should not create their custom fields in DTO (D
 If you have 1 year migration period from verison N to version N+1 specify that.
 If you have marker metadata about API deprecation (for example, deprecation warning header) specify that.
 
-== JSON-first API
+== Create JSON-first API
 
 === Explanation
 
-If a client doesn't provide Accept header specifying expected data format then return JSON
+If a client doesn't provide Accept header specifying expected data format then return JSON.
 
 === Reason
 
@@ -75,7 +75,48 @@ Use `rest` not `api` and not `zero` prefix because of extendability.
 In one year you can provide extra GraphQL API for effective and flexible data fetching or any other API over http.
 Two base urls `api.yourdbackendomain.com` and `graphql.yourdbackendomain.com` will look not obvious.
 
-== Mandatory versioning
+== Make versioning mandatory
+
+=== Explanation
+
+The first thing to do if you create a new endpoint is to set a version.
+
+=== Reason
+
+If you don't have versioning for your API you either break backward compatibility or confuse your clients with version 2 when you didn't have version 1.
+
+== Make simple and obvious versioning
+
+=== Explanation
+
+It is crucial for your clients easily understand API version. It makes strong expectations about responses and possibility to upgrade.
+
+The option with relatively minimal set of disadvantages is versioning in URL: `rest.your-domain.com/v3/articles`.
+Scope of versioning should cover as much as possible otherwise it can bring your clients to a misunderstanding of reasons why you limited scope for a particular sub-URL,
+redundant complexity, paying too much attention to version position in URL.
+
+=== Alternative
+
+a. Version as a custom header `X-API-VERSION`
+b. Version as a part of Accept header
+c. Version as a query parameter
+
+=== Reason
+
+Advantages:
+
+- the simplest, and the most obvious way to do versioning
+- impossible to ignore version
+- obvious scope of versioning (the following part of URL)
+- if API is public it is enough to have any browser to test endpoint
+
+Disadvantages:
+
+- In some web frameworks to follow that approach it will require to create new files/classes to handle requests with next version
+
+The alternatives either over-complicated for clients or not obvious.
+In some cases, clients have to know the proper header (a) or its format can be difficult to read (b).
+Versioning using query param list (c) is simpler than versioning using header, but it still doesn't have an obvious scope and there is a possibility to ignore the parameter until you see an error from the server. It can be missed among other parameters as well, so it is harder to work with.
 
 == Nouns-first design
 
