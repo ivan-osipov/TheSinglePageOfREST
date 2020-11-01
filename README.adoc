@@ -66,14 +66,17 @@ It is simple, pretty concise, readable both by machines and humans.
 
 === Alternatives
 
-- `api.your-backend-domain.com`
-- `your-backend-domain.com`
+a. `api.your-backend-domain.com`
+b. `your-backend-domain.com`
+c. `rest.your-frontend-domain.com`
 
 === Reason
 
 Use `rest` not `api` and not `zero` prefix because of extendability.
 In one year you can provide extra GraphQL API for effective and flexible data fetching or any other API over http.
-Two base urls `api.yourdbackendomain.com` and `graphql.yourdbackendomain.com` will look not obvious.
+Two base urls `api.yourdbackendomain.com` (a) and `graphql.yourdbackendomain.com` will confuse your clients. Using root domain without subdomains (b)
+will bring us to the previous issue again. Using subdomain for frontends can increase the complexity of API usage on the frontend side. In the case of `your-frontend-domain.com/rest`
+A frontend team can just rely on relative paths.
 
 == Make versioning mandatory
 
