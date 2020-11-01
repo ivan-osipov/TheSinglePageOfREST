@@ -13,7 +13,21 @@ This document is mostly about **Uniform interface constraint**.
 
 TIP: If you can remember only one thing: _DO API DESIGN UNIFORMLY EVERYWHERE_.
 
-include::sections/Format Template.adoc[]
+All recommendations follow the format:
+
+== <number>. Name of a recommendation
+
+=== Explanation
+
+Detailed explanation of the recommendation
+
+=== Alternatives (if applicable)
+
+Only relevant alternatives
+
+=== Reason
+
+Why the recommendation is better than alternatives
 
 :sectnums:
 
